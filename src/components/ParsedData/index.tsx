@@ -51,7 +51,7 @@ const ParsedData: FC<{ data: string[][] }> = ({ data }) => {
                                 hoveredItemInd === ind &&
                                 <button
                                     onClick={() => { itemIndToChange === ind ? changeList() : setItemIndToChange(ind); setItemValueToChange(item[1]) }}
-                                    className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary">
+                                    className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
                                     <img className="w-4 h-4" src={itemIndToChange === ind ? "/checkmark.svg" : "/pen.svg"} alt="+" />
                                 </button>
                             }
