@@ -1,25 +1,8 @@
 import { Dispatch, FC, useEffect, useState } from "react";
 
 const ParsedData: FC<{ data: string[][], setData: Dispatch<React.SetStateAction<string[][]>> }> = ({ data }) => {
-    // const [list, setList] = useState<string[][]>([]);
 
-    const resultObject = {
-        '(дата)': data[0][0],
-        '(Номер поручения)': data[0][2],
-        'Грузоотправитель': '',
-        'Клиент': '',
-        'Экспедитор': '',
-        'Страна происхождения груза': '',
-        'Товарный код': '',
-        'Количество мест, вид упаковки': '',
-        'Вес брутто, нетто': '',
-        'Размер упаковки': '',
-        'Условия': '',
-        'Особые отметки': '',
-        'Подпись экспедитора': '',
-    }
-
-    const [list, setList] = useState([]);
+    const [list, setList] = useState<string[][]>([]);
 
     useEffect(() => {
         console.log(data);
@@ -46,7 +29,7 @@ const ParsedData: FC<{ data: string[][], setData: Dispatch<React.SetStateAction<
                 newObj.push(['12 Стоимость', el[1]])
             }
         })
-        newObj = newObj.sort((a, b) => a[0].split(' ')[0] - b[0].split(' ')[0]);
+        newObj = newObj.sort((a, b) => +a[0].split(' ')[0] - +b[0].split(' ')[0]);
         newObj.push(['14 Условия', ''], ['15 Особые отметки', ''], ['16 Подпись экспедитора', ''])
 
         console.log(newObj);
