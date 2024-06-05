@@ -60,15 +60,15 @@ const ParsedData: FC<{ data: string[][] }> = ({ data }) => {
                             <div
                                 onMouseEnter={() => setHoveredItemInd(0)}
                                 onMouseLeave={() => setHoveredItemInd(null)}
-                                className="relative w-full h-6 border-b border-light-gray flex flex-row justify-center items-center">
+                                className="relative w-full min-h-6 border-b border-gray flex flex-row justify-center items-center">
                                 {
                                     itemIndToChange === 0 ?
                                         <input
                                             onBlur={changeList}
-                                            className="w-2/3 h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                            className="w-full mb-1 h-fit outline-none border-2 rounded-md p-2 border-light-gray"
                                             onChange={(e) => setItemValueToChange(e.currentTarget.value)}
                                             value={itemValueToChange} /> :
-                                        <p className="text-center text-black">{list[0][1]}</p>
+                                        <p className="text-center text-black min-h-[25px]">{list[0][1]}</p>
                                 }
                                 {
                                     hoveredItemInd === 0 &&
@@ -85,15 +85,15 @@ const ParsedData: FC<{ data: string[][] }> = ({ data }) => {
                             <div
                                 onMouseEnter={() => setHoveredItemInd(1)}
                                 onMouseLeave={() => setHoveredItemInd(null)}
-                                className="relative w-full h-6 border-b border-light-gray flex flex-row justify-center items-center">
+                                className="relative w-full min-h-6 border-b border-gray flex flex-row justify-center items-center">
                                 {
                                     itemIndToChange === 1 ?
                                         <input
                                             onBlur={changeList}
-                                            className="w-2/3 h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                            className="w-full mb-1 h-fit outline-none border-2 rounded-md p-2 border-light-gray"
                                             onChange={(e) => setItemValueToChange(e.currentTarget.value)}
                                             value={itemValueToChange} /> :
-                                        <p className="text-center text-black">{list[1][1]}</p>
+                                        <p className="text-center text-black min-h-[25px]">{list[1][1]}</p>
                                 }
                                 {
                                     hoveredItemInd === 1 &&
@@ -110,22 +110,22 @@ const ParsedData: FC<{ data: string[][] }> = ({ data }) => {
                     {/* <p>{data[2][0]}</p> */}
                     <div className="flex flex-col gap-3">
                         {
-                            list.slice(2).map((item, ind) => (
+                            list.slice(2, 6).map((item, ind) => (
                                 <div
                                     onMouseEnter={() => setHoveredItemInd(ind + 2)}
                                     onMouseLeave={() => setHoveredItemInd(null)}
                                     key={ind + 2}
-                                    className="pb-3 border-b border-light-gray flex flex-row gap-3 relative items-center">
-                                    <p className="text-gray w-1/3 mb-auto">{item[0]}</p>
+                                    className=" flex flex-row gap-3 relative items-center">
+                                    <p className="text-gray w-1/4 mb-auto">{item[0]}</p>
                                     {
                                         itemIndToChange === ind + 2 ?
                                             <textarea
                                                 onBlur={changeList}
-                                                rows={3}
-                                                className="w-2/3 h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                                rows={1}
+                                                className="w-3/4 h-fit outline-none border-2 rounded-md p-2 border-light-gray"
                                                 onChange={(e) => setItemValueToChange(e.currentTarget.value)}
                                                 value={itemValueToChange}></textarea> :
-                                            <p className="w-2/3">{item[1]}</p>
+                                            <p className="w-3/4 border-b border-gray min-h-[25px]">{item[1]}</p>
                                     }
                                     {
                                         hoveredItemInd === ind + 2 &&
@@ -133,6 +133,185 @@ const ParsedData: FC<{ data: string[][] }> = ({ data }) => {
                                             onClick={() => { itemIndToChange === ind + 2 ? changeList() : setItemIndToChange(ind + 2); setItemValueToChange(item[1]) }}
                                             className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
                                             <img className="w-4 h-4" src={itemIndToChange === ind + 2 ? "/checkmark.svg" : "/pen.svg"} alt="+" />
+                                        </button>
+                                    }
+                                </div>
+                            ))
+                        }
+                        {
+                            <div className="flex flex-row gap-5 w-full">
+                                <div
+                                    onMouseEnter={() => setHoveredItemInd(6)}
+                                    onMouseLeave={() => setHoveredItemInd(null)}
+                                    className="w-1/2  flex flex-row gap-3 relative items-center">
+                                    <p className="text-gray w-fit text-nowrap">{list[6][0]}</p>
+                                    {
+                                        itemIndToChange === 6 ?
+                                            <textarea
+                                                onBlur={changeList}
+                                                rows={1}
+                                                className="w-full h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                                onChange={(e) => setItemValueToChange(e.currentTarget.value)}
+                                                value={itemValueToChange}></textarea> :
+                                            <p className="w-full border-b border-gray min-h-[25px]">{list[6][1]}</p>
+                                    }
+                                    {
+                                        hoveredItemInd === 6 &&
+                                        <button
+                                            onClick={() => { itemIndToChange === 6 ? changeList() : setItemIndToChange(6); setItemValueToChange(list[6][1]) }}
+                                            className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
+                                            <img className="w-4 h-4" src={itemIndToChange === 6 ? "/checkmark.svg" : "/pen.svg"} alt="+" />
+                                        </button>
+                                    }
+                                </div>
+                                <div
+                                    onMouseEnter={() => setHoveredItemInd(7)}
+                                    onMouseLeave={() => setHoveredItemInd(null)}
+                                    className="w-1/2  flex flex-row gap-3 relative items-center">
+                                    <p className="text-gray w-fit text-nowrap">{list[7][0]}</p>
+                                    {
+                                        itemIndToChange === 7 ?
+                                            <textarea
+                                                onBlur={changeList}
+                                                rows={1}
+                                                className="w-full h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                                onChange={(e) => setItemValueToChange(e.currentTarget.value)}
+                                                value={itemValueToChange}></textarea> :
+                                            <p className="w-full border-b border-gray min-h-[25px]">{list[7][1]}</p>
+                                    }
+                                    {
+                                        hoveredItemInd === 7 &&
+                                        <button
+                                            onClick={() => { itemIndToChange === 7 ? changeList() : setItemIndToChange(7); setItemValueToChange(list[7][1]) }}
+                                            className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
+                                            <img className="w-4 h-4" src={itemIndToChange === 7 ? "/checkmark.svg" : "/pen.svg"} alt="+" />
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        <div
+                            onMouseEnter={() => setHoveredItemInd(8)}
+                            onMouseLeave={() => setHoveredItemInd(null)}
+                            className=" flex flex-row gap-3 relative items-center">
+                            <p className="text-gray w-1/4">{list[8][0]}</p>
+                            {
+                                itemIndToChange === 8 ?
+                                    <textarea
+                                        onBlur={changeList}
+                                        rows={1}
+                                        className="w-3/4 h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                        onChange={(e) => setItemValueToChange(e.currentTarget.value)}
+                                        value={itemValueToChange}></textarea> :
+                                    <p className="w-3/4 border-b border-gray min-h-[25px]">{list[8][1]}</p>
+                            }
+                            {
+                                hoveredItemInd === 8 &&
+                                <button
+                                    onClick={() => { itemIndToChange === 8 ? changeList() : setItemIndToChange(8); setItemValueToChange(list[8][1]) }}
+                                    className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
+                                    <img className="w-4 h-4" src={itemIndToChange === 8 ? "/checkmark.svg" : "/pen.svg"} alt="+" />
+                                </button>
+                            }
+                        </div>
+                        <div className="flex flex-row gap-5 w-full">
+                            <div
+                                onMouseEnter={() => setHoveredItemInd(9)}
+                                onMouseLeave={() => setHoveredItemInd(null)}
+                                className="w-1/3 flex flex-row gap-3 relative items-center">
+                                <p className="text-gray w-fit text-nowrap">{list[9][0]}</p>
+                                {
+                                    itemIndToChange === 9 ?
+                                        <textarea
+                                            onBlur={changeList}
+                                            rows={1}
+                                            className="w-full h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                            onChange={(e) => setItemValueToChange(e.currentTarget.value)}
+                                            value={itemValueToChange}></textarea> :
+                                        <p className="w-full border-b border-gray min-h-[25px] text-nowrap">{list[9][1]}</p>
+                                }
+                                {
+                                    hoveredItemInd === 9 &&
+                                    <button
+                                        onClick={() => { itemIndToChange === 9 ? changeList() : setItemIndToChange(9); setItemValueToChange(list[9][1]) }}
+                                        className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
+                                        <img className="w-4 h-4" src={itemIndToChange === 9 ? "/checkmark.svg" : "/pen.svg"} alt="+" />
+                                    </button>
+                                }
+                            </div>
+                            <div
+                                onMouseEnter={() => setHoveredItemInd(10)}
+                                onMouseLeave={() => setHoveredItemInd(null)}
+                                className="w-1/3 flex flex-row gap-3 relative items-center">
+                                <p className="text-gray w-fit text-nowrap">{list[10][0]}</p>
+                                {
+                                    itemIndToChange === 10 ?
+                                        <textarea
+                                            onBlur={changeList}
+                                            rows={1}
+                                            className="w-full h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                            onChange={(e) => setItemValueToChange(e.currentTarget.value)}
+                                            value={itemValueToChange}></textarea> :
+                                        <p className="w-full border-b border-gray min-h-[25px] text-nowrap">{list[10][1]}</p>
+                                }
+                                {
+                                    hoveredItemInd === 10 &&
+                                    <button
+                                        onClick={() => { itemIndToChange === 10 ? changeList() : setItemIndToChange(10); setItemValueToChange(list[10][1]) }}
+                                        className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
+                                        <img className="w-4 h-4" src={itemIndToChange === 10 ? "/checkmark.svg" : "/pen.svg"} alt="+" />
+                                    </button>
+                                }
+                            </div>
+                            <div
+                                onMouseEnter={() => setHoveredItemInd(11)}
+                                onMouseLeave={() => setHoveredItemInd(null)}
+                                className="w-1/3 flex flex-row gap-3 relative items-center">
+                                <p className="text-gray w-fit text-nowrap">{list[11][0]}</p>
+                                {
+                                    itemIndToChange === 11 ?
+                                        <textarea
+                                            onBlur={changeList}
+                                            rows={1}
+                                            className="w-full h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                            onChange={(e) => setItemValueToChange(e.currentTarget.value)}
+                                            value={itemValueToChange}></textarea> :
+                                        <p className="w-full border-b border-gray min-h-[25px] text-nowrap">{list[11][1]}</p>
+                                }
+                                {
+                                    hoveredItemInd === 11 &&
+                                    <button
+                                        onClick={() => { itemIndToChange === 11 ? changeList() : setItemIndToChange(11); setItemValueToChange(list[11][1]) }}
+                                        className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
+                                        <img className="w-4 h-4" src={itemIndToChange === 11 ? "/checkmark.svg" : "/pen.svg"} alt="+" />
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                        {
+                            list.slice(12).map((item, ind) => (
+                                <div
+                                    onMouseEnter={() => setHoveredItemInd(ind + 12)}
+                                    onMouseLeave={() => setHoveredItemInd(null)}
+                                    key={ind + 12}
+                                    className=" flex flex-row gap-3 relative items-center">
+                                    <p className="text-gray w-1/4 mb-auto">{item[0]}</p>
+                                    {
+                                        itemIndToChange === ind + 12 ?
+                                            <textarea
+                                                onBlur={changeList}
+                                                rows={1}
+                                                className="w-3/4 h-fit outline-none border-2 rounded-md p-2 border-light-gray"
+                                                onChange={(e) => setItemValueToChange(e.currentTarget.value)}
+                                                value={itemValueToChange}></textarea> :
+                                            <p className="w-3/4 border-b border-gray min-h-[25px]">{item[1]}</p>
+                                    }
+                                    {
+                                        hoveredItemInd === ind + 12 &&
+                                        <button
+                                            onClick={() => { itemIndToChange === ind + 12 ? changeList() : setItemIndToChange(ind + 12); setItemValueToChange(item[1]) }}
+                                            className="p-3 rounded-full bg-white absolute right-[-18px] shadow hover:bg-light-gray-secondary print:hidden">
+                                            <img className="w-4 h-4" src={itemIndToChange === ind + 12 ? "/checkmark.svg" : "/pen.svg"} alt="+" />
                                         </button>
                                     }
                                 </div>
