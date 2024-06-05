@@ -52,6 +52,7 @@ const ParsedData: FC<{ data: string[][] }> = ({ data }) => {
 
     return (
         <section className="flex flex-col gap-7 p-12">
+            <h1 className="text-center font-bold text-3xl mb-10">Экспедиторская расписка</h1>
             {
                 !!list.length &&
                 <>
