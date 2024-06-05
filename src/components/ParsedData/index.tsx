@@ -1,6 +1,6 @@
-import { Dispatch, FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-const ParsedData: FC<{ data: string[][], setData: Dispatch<React.SetStateAction<string[][]>> }> = ({ data }) => {
+const ParsedData: FC<{ data: string[][] }> = ({ data }) => {
 
     const [list, setList] = useState<string[][]>([]);
 
